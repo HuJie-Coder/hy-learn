@@ -1,0 +1,52 @@
+version: "3.9"
+services:
+
+  jobmanager:
+    image: "flink:1.12.2"
+    container_name: "jobmanager"
+    ports:
+      - "8081:8081"
+    networks:
+      - "flink-network"
+    command: "jobmanager"
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: jobmanager
+
+  taskmanager_1:
+    image: "flink:1.12.2"
+    container_name: "taskmanager_1"
+    scale: 1
+    networks:
+      - "flink-network"
+    depends_on:
+      - "jobmanager"
+    command: "taskmanager"
+    links:
+      - "jobmanager"
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: jobmanager
+        taskmanager.numberOfTaskSlots: 3
+        parallelism.default: 2
+
+#  taskmanager_2:
+#    image: "flink:1.12.2"
+#    container_name: "taskmanager_2"
+#    networks:
+#      - "flink-network"
+#    depends_on:
+#      - "jobmanager"
+#    command: "taskmanager"
+#    links:
+#      - "jobmanager"
+#    environment:
+#      - "JOB_MANAGER_RPC_ADDRESS=jobmanager"
+#      - "TASKMANAGER_NUMBEROFTASKSLOTS=2"
+
+networks:
+  flink-network:
+    name: "flink-network"
+    driver: bridge

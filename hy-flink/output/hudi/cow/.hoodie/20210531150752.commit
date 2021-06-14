@@ -1,0 +1,74 @@
+{
+  "partitionToWriteStats" : {
+    "date=20210101/name=Danny" : [ {
+      "fileId" : "083837b9-9205-4af1-8179-5c8cf9c6e953",
+      "path" : "date=20210101/name=Danny/083837b9-9205-4af1-8179-5c8cf9c6e953-0_1-2-0_20210531150752.parquet",
+      "prevCommit" : "20210531150612",
+      "numWrites" : 2,
+      "numDeletes" : 0,
+      "numUpdateWrites" : 2,
+      "numInserts" : 0,
+      "totalWriteBytes" : 435320,
+      "totalWriteErrors" : 0,
+      "tempPath" : null,
+      "partitionPath" : "date=20210101/name=Danny",
+      "totalLogRecords" : 0,
+      "totalLogFilesCompacted" : 0,
+      "totalLogSizeCompacted" : 0,
+      "totalUpdatedRecordsCompacted" : 0,
+      "totalLogBlocks" : 0,
+      "totalCorruptLogBlock" : 0,
+      "totalRollbackBlocks" : 0,
+      "fileSizeInBytes" : 435320,
+      "minEventTime" : null,
+      "maxEventTime" : null
+    } ],
+    "date=20210102/name=Stephen" : [ {
+      "fileId" : "9b10f122-20d9-456a-8dbe-50cc91ccd5f2",
+      "path" : "date=20210102/name=Stephen/9b10f122-20d9-456a-8dbe-50cc91ccd5f2-0_0-2-0_20210531150752.parquet",
+      "prevCommit" : "20210531150612",
+      "numWrites" : 1,
+      "numDeletes" : 0,
+      "numUpdateWrites" : 1,
+      "numInserts" : 0,
+      "totalWriteBytes" : 435219,
+      "totalWriteErrors" : 0,
+      "tempPath" : null,
+      "partitionPath" : "date=20210102/name=Stephen",
+      "totalLogRecords" : 0,
+      "totalLogFilesCompacted" : 0,
+      "totalLogSizeCompacted" : 0,
+      "totalUpdatedRecordsCompacted" : 0,
+      "totalLogBlocks" : 0,
+      "totalCorruptLogBlock" : 0,
+      "totalRollbackBlocks" : 0,
+      "fileSizeInBytes" : 435219,
+      "minEventTime" : null,
+      "maxEventTime" : null
+    } ]
+  },
+  "compacted" : false,
+  "extraMetadata" : {
+    "schema" : "{\"type\":\"record\",\"name\":\"record\",\"fields\":[{\"name\":\"id\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"name\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"age\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"time\",\"type\":[\"null\",{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}],\"default\":null},{\"name\":\"date\",\"type\":[\"null\",\"string\"],\"default\":null}]}"
+  },
+  "operationType" : null,
+  "totalLogRecordsCompacted" : 0,
+  "totalRecordsDeleted" : 0,
+  "totalUpsertTime" : 1496,
+  "totalCreateTime" : 0,
+  "fileIdAndRelativePaths" : {
+    "9b10f122-20d9-456a-8dbe-50cc91ccd5f2" : "date=20210102/name=Stephen/9b10f122-20d9-456a-8dbe-50cc91ccd5f2-0_0-2-0_20210531150752.parquet",
+    "083837b9-9205-4af1-8179-5c8cf9c6e953" : "date=20210101/name=Danny/083837b9-9205-4af1-8179-5c8cf9c6e953-0_1-2-0_20210531150752.parquet"
+  },
+  "totalScanTime" : 0,
+  "totalCompactedRecordsUpdated" : 0,
+  "totalLogFilesCompacted" : 0,
+  "totalLogFilesSize" : 0,
+  "minAndMaxEventTime" : {
+    "Optional.empty" : {
+      "val" : null,
+      "present" : false
+    }
+  },
+  "writePartitionPaths" : [ "date=20210101/name=Danny", "date=20210102/name=Stephen" ]
+}
