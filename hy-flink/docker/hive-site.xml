@@ -1,0 +1,39 @@
+<configuration>
+
+    <property>
+        <name>hive.metastore.warehouse.dir</name>
+        <value>hdfs://120.26.84.112:9000/user/hive/warehouse</value>
+    </property>
+
+    <property>
+        <name>javax.jdo.option.ConnectionURL</name>
+        <value>jdbc:mysql://120.26.84.112:33061/hive?createDatabaseIfNotExist=true</value>
+    </property>
+ 
+    <property>
+        <name>javax.jdo.option.ConnectionDriverName</name>
+        <value>com.mysql.cj.jdbc.Driver</value>
+    </property>
+ 
+    <property>
+        <name>javax.jdo.option.ConnectionUserName</name>
+        <value>hive</value>
+    </property>
+ 
+    <property>
+        <name>javax.jdo.option.ConnectionPassword</name>
+        <value>hive^123</value>
+    </property>
+     <property>
+          <name>hive.metastore.uris</name>
+          <value>thrift://120.26.84.112:9083</value>
+     </property>
+     <property>
+	     <name>hive.server2.thrift.port</name>
+	     <value>10000</value>
+     </property>
+     <property>
+	     <name>hive.server2.thrift.bind.host</name>
+	     <value>120.26.84.112</value>
+     </property>
+</configuration>

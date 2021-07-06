@@ -7,10 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="hy-hudi" />
-        <module name="hy-java" />
+        <module name="hy-flink" />
         <module name="hy-spark" />
         <module name="hy-scala" />
-        <module name="hy-flink" />
+        <module name="hy-java" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
