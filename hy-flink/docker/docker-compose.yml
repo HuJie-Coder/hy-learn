@@ -13,6 +13,7 @@ services:
       - |
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
+        fs.default-scheme: hdfs://120.26.84.112:9000
 
   taskmanager_1:
     image: "flink:1.12.2"
@@ -30,11 +31,13 @@ services:
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
         taskmanager.numberOfTaskSlots: 3
-        parallelism.default: 2
+        parallelism.default: 1
+        fs.default-scheme: hdfs://120.26.84.112:9000
 
 #  taskmanager_2:
 #    image: "flink:1.12.2"
 #    container_name: "taskmanager_2"
+#    scale: 1
 #    networks:
 #      - "flink-network"
 #    depends_on:
@@ -43,8 +46,12 @@ services:
 #    links:
 #      - "jobmanager"
 #    environment:
-#      - "JOB_MANAGER_RPC_ADDRESS=jobmanager"
-#      - "TASKMANAGER_NUMBEROFTASKSLOTS=2"
+#      - |
+#        FLINK_PROPERTIES=
+#        jobmanager.rpc.address: jobmanager
+#        taskmanager.numberOfTaskSlots: 2
+#        parallelism.default: 2
+#        fs.default-scheme: hdfs://120.26.84.112:9000
 
 networks:
   flink-network:

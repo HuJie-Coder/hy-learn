@@ -11,7 +11,7 @@ import org.apache.flink.table.api.{EnvironmentSettings, TableEnvironment}
 object HudiConnector {
 
   def main(args: Array[String]): Unit = {
-    System.setProperty("HADOOP_USER_NAME", "root")
+    System.setProperty("HADOOP_USER_NAME", "hadoop")
 
     val settings: EnvironmentSettings = EnvironmentSettings.newInstance().useBlinkPlanner().inBatchMode().build()
     val tableEnv: TableEnvironment = TableEnvironment.create(settings)
@@ -29,7 +29,7 @@ object HudiConnector {
         |)
         |WITH(
         | 'connector' = 'hudi',
-        | 'path' = 'hdfs://10.211.55.20:8100/user/hive/warehouse/hy.db/hudi_test',
+        | 'path' = 'hdfs://120.26.84.112:9000/user/hive/warehouse/hy.db/hudi_test',
         | 'write.tasks' = '2',
         | 'write.batch.size.MB' = '128',
         | 'compaction.task' = '2',

@@ -12,6 +12,9 @@
         <module>hy-flink</module>
         <module>hy-hudi</module>
         <module>hy-java</module>
+        <module>hy-scala</module>
+        <module>hy-hive</module>
+        <module>hy-spark</module>
     </modules>
 
 

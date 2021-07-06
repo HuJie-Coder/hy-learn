@@ -8,6 +8,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="hy-hudi" />
         <module name="hy-java" />
+        <module name="hy-spark" />
+        <module name="hy-scala" />
         <module name="hy-flink" />
       </profile>
     </annotationProcessing>
