@@ -15,6 +15,7 @@
         <module>hy-scala</module>
         <module>hy-hive</module>
         <module>hy-spark</module>
+        <module>hy-poc-flink</module>
     </modules>
 
 
