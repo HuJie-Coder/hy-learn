@@ -16,6 +16,7 @@
         <module>hy-hive</module>
         <module>hy-spark</module>
         <module>hy-poc-flink</module>
+        <module>hy-spark</module>
     </modules>
 
 
