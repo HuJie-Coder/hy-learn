@@ -21,7 +21,7 @@ import org.apache.flink.util.Collector;
  */
 public class HySocketSink {
 
-    public static String host = "127.0.0.1";
+    public static String host = "120.26.84.112";
 
     public static Integer sourcePort = 8989;
 
@@ -38,7 +38,6 @@ public class HySocketSink {
                     }
                 }))
                 .returns(Types.STRING).setParallelism(1);
-        flapMapStream.print().setParallelism(1);
         flapMapStream.addSink(new SocketClientSink<String>(host,
                 sinkPort,
                 new SimpleStringSchema(),
