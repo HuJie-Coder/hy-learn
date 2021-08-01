@@ -9,6 +9,7 @@ import org.apache.flink.streaming.api.functions.sink.filesystem.{OutputFileConfi
 import org.apache.flink.streaming.api.functions.sink.filesystem.bucketassigners.DateTimeBucketAssigner
 import org.apache.flink.streaming.api.functions.sink.filesystem.rollingpolicies.DefaultRollingPolicy
 import org.slf4j.{Logger, LoggerFactory}
+import org.apache.flink.streaming.api.datastream.DataStreamSource
 
 /**
   * SocketHelloWorld
@@ -24,7 +25,8 @@ object StreamingFileSinkPoc {
 
     val tool = ParameterTool.fromArgs(args)
     val streamEnv = StreamExecutionEnvironment.getExecutionEnvironment
-    val socketStream = streamEnv.socketTextStream(tool.get("host"), tool.getInt("port"))
+    val socketStream: DataStreamSource[String] = streamEnv.socketTextStream(tool.get("host"), tool.getInt("port"))
+
     val config = streamEnv.getConfig
     val checkpointCfg = streamEnv.getCheckpointConfig
     checkpointCfg.enableExternalizedCheckpoints(CheckpointConfig.ExternalizedCheckpointCleanup.RETAIN_ON_CANCELLATION)
@@ -67,10 +69,8 @@ object StreamingFileSinkPoc {
           .build())
       .build()
 
-    socketStream.map(row => {
-      logger.info(s"received record: ${row}")
-      row
-    }).addSink(fileSink)
+    socketStream.map(row => row)
+      .addSink(fileSink)
 
     streamEnv.execute("POC_Socket_Stream")
   }

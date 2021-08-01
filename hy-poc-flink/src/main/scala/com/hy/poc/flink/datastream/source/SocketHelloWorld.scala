@@ -12,14 +12,12 @@ import org.slf4j.{Logger, LoggerFactory}
 object SocketHelloWorld {
 
   private val logger: Logger = LoggerFactory.getLogger(SocketHelloWorld.getClass)
+
   def main(args: Array[String]): Unit = {
 
     val streamEnv = StreamExecutionEnvironment.getExecutionEnvironment
-    val socketStream = streamEnv.socketTextStream("120.26.84.112",9200)
-    socketStream.map(row => {
-      logger.info(s"received record: ${row}")
-      row
-    })
+    val socketStream = streamEnv.socketTextStream("120.26.84.112", 9200)
+
     streamEnv.execute("POC_Socket_Stream")
   }
 
