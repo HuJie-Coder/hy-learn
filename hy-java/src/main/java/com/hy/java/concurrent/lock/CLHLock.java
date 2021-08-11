@@ -21,54 +21,37 @@ public class CLHLock {
      */
     private final AtomicReference<CLHNode> tailNode;
 
-    /**
-     * prenode
-     */
-    private final ThreadLocal<CLHNode> predNode;
 
     /**
      * current node
      */
     private final ThreadLocal<CLHNode> curNode;
 
+
+    private CLHNode node;
     public CLHLock() {
         tailNode = new AtomicReference<>(new CLHNode());
-
-        predNode = new ThreadLocal<>();
-
         curNode = new ThreadLocal<CLHNode>() {
             @Override
             protected CLHNode initialValue() {
                 return new CLHNode();
             }
         };
+
     }
 
-    /**
-     * lock
-     */
     public void lock() {
-        CLHNode node = curNode.get();
-        node.locked = true;
-        CLHNode preNode = tailNode.getAndSet(node);
-        predNode.set(preNode);
-        while (preNode.locked) {
-            System.out.println(Thread.currentThread().getName() + "自旋中");
+        CLHNode own = curNode.get();
+        own.locked = true;
+        CLHNode pre = tailNode.getAndSet(own);
+        while (pre.locked) {
         }
-        System.out.println(Thread.currentThread().getName() + " get lock");
+
     }
 
-    /**
-     * unlock
-     */
     public void unlock() {
-        CLHNode node = curNode.get();
-        node.locked = false;
-        System.out.println(Thread.currentThread().getName() + " release lock");
-        // 防止死锁，一直自旋
-        CLHNode newNode = new CLHNode();
-        curNode.set(newNode);
-        //
-        curNode.set(predNode.get());
+        curNode.get().locked = false;
     }
+
+
 }

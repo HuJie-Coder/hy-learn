@@ -1,9 +1,9 @@
 version: "3.9"
 services:
-
   jobmanager:
-    image: "flink:1.12.2"
+    image: "flink:1.13.1"
     container_name: "jobmanager"
+    hostname: "jobmanager"
     ports:
       - "8081:8081"
     networks:
@@ -13,11 +13,17 @@ services:
       - |
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
+        taskmanager.numberOfTaskSlots: 3
+        parallelism.default: 1
         fs.default-scheme: hdfs://120.26.84.112:9000
+        state.backend: filesystem
+        state.checkpoints.dir: hdfs://120.26.84.112:9000/user/flink/flink-checkpoints
+        state.savepoints.dir: hdfs://120.26.84.112:9000/user/flink/flink-savepoints
 
   taskmanager_1:
-    image: "flink:1.12.2"
+    image: "flink:1.13.1"
     container_name: "taskmanager_1"
+    hostname: "taskmanager_1"
     scale: 1
     networks:
       - "flink-network"
@@ -33,6 +39,9 @@ services:
         taskmanager.numberOfTaskSlots: 3
         parallelism.default: 1
         fs.default-scheme: hdfs://120.26.84.112:9000
+        state.backend: filesystem
+        state.checkpoints.dir: hdfs://120.26.84.112:9000/user/flink/flink-checkpoints
+        state.savepoints.dir: hdfs://120.26.84.112:9000/user/flink/flink-savepoints
 
 #  taskmanager_2:
 #    image: "flink:1.12.2"

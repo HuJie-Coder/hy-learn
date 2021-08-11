@@ -19,9 +19,9 @@ public class HyDate {
         String format = DateFormat.getDateInstance().format(new Date());
         String format1 = DateFormat.getInstance().format(new Date());
         String format2 = DateFormat.getTimeInstance().format(new Date());
-        System.out.println(format2);
-        System.out.println(format1);
         System.out.println(format);
+        System.out.println(format1);
+        System.out.println(format2);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
         String format3 = simpleDateFormat.format(new Date());
         System.out.println(format3);

@@ -8,32 +8,13 @@
     <artifactId>hy-flink</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>Aliyun</name>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-        </repository>
-        <repository>
-            <id>cloudera</id>
-            <name>CDH</name>
-            <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
-        </repository>
-    </repositories>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <target.java.version>1.8</target.java.version>
         <scala.binary.version>2.12</scala.binary.version>
         <maven.compiler.source>${target.java.version}</maven.compiler.source>
         <maven.compiler.target>${target.java.version}</maven.compiler.target>
-        <flink.version>1.12.2</flink.version>
+        <flink.version>1.13.0</flink.version>
         <log4j.version>2.12.1</log4j.version>
         <hive.version>2.3.0</hive.version>
         <hadoop.version>2.7.5</hadoop.version>
