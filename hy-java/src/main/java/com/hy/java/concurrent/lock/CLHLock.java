@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public class CLHLock {
 
-    private static class CLHNode {
+    private class CLHNode {
         // 锁状态，false 表示线程没有获取到锁，true 表示线程已经获取到锁
         // 为了保证 locked 在各个线程之间是可见的，使用 volatile 进行修饰
         volatile boolean locked = false;
@@ -29,6 +29,7 @@ public class CLHLock {
 
 
     private CLHNode node;
+
     public CLHLock() {
         tailNode = new AtomicReference<>(new CLHNode());
         curNode = new ThreadLocal<CLHNode>() {
