@@ -115,12 +115,18 @@ public class LRUCache<K, V> {
      * @return
      */
     public V get(K key) {
-        Node node = cache.get(key);
-        if (node == null) {
-            return null;
+        lock.lock();
+        try {
+            Node node = cache.get(key);
+            if (node == null) {
+                return null;
+            }
+            moveToFirst(node);
+            return node.data;
+        } finally {
+            lock.unlock();
         }
-        moveToFirst(node);
-        return node.data;
+
     }
 
     /**

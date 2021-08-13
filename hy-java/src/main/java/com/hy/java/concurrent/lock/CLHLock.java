@@ -28,8 +28,6 @@ public class CLHLock {
     private final ThreadLocal<CLHNode> curNode;
 
 
-    private CLHNode node;
-
     public CLHLock() {
         tailNode = new AtomicReference<>(new CLHNode());
         curNode = new ThreadLocal<CLHNode>() {
@@ -38,7 +36,6 @@ public class CLHLock {
                 return new CLHNode();
             }
         };
-
     }
 
     public void lock() {
@@ -47,12 +44,10 @@ public class CLHLock {
         CLHNode pre = tailNode.getAndSet(own);
         while (pre.locked) {
         }
-
     }
 
     public void unlock() {
         curNode.get().locked = false;
     }
-
 
 }
